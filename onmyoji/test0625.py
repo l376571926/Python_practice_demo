@@ -1,5 +1,5 @@
 # --------------------------------------------------------
-# 妖气封印  自动上车脚本
+# 妖气封印自动上车脚本
 import atx
 import time
 import random
@@ -8,22 +8,21 @@ d = atx.connect('U10AFCPF22EFQ')  # U10AFCPF22EFQ 指定连接一台手机
 # d.start_app('com.netease.cloudmusic')
 
 while True:
-
     count = 0
-    while not d.exists("item/3.png"):
+    while not d.exists("item/team.png"):
         count = count + 1
-        print("还没到组队页面---->" + str(count))
-    print("到组队页面---->" + str(count))
+        print("还没到主界面---->" + str(count))
+    print("成功到主界面--->" + str(count))
 
     x = random.choice(range(214, 280))
-    y = random.choice(range(600, 680))
+    y = random.choice(range(600, 684))
     d.click(x, y)  # 214,581 319,684    组队
 
     count = 0
-    while not d.exists("item/6.png"):
+    while not d.exists("item/refresh.png"):
         count = count + 1
-        print("还没到组队页面---->" + str(count))
-    print("到组队页面---->" + str(count))
+        print("还没到组队选择界面---->" + str(count))
+    print("成功到组队选择界面--->" + str(count))
 
     x = random.choice(range(154, 354))
     y = random.choice(range(560, 609))
@@ -48,14 +47,20 @@ while True:
                 flag = False
             elif d.exists("item/setuphero.png"):  # 准备
                 flag = False
+            # elif d.exists("item/setuphero.png"):  # 准备
+            #     flag = False
             else:
                 print("还没上车--->" + str(count))
     print("成功上车--->" + str(count))
+
+    if d.exists("item/start_battle.png"):
+        d.click_image("item/start_battle.png")
 
     count = 0
     while not d.exists("item/setuphero.png"):
         count = count + 1
         print("还没到准备页面---->" + str(count))
+    print("到准备页面---->" + str(count))
 
     x = random.choice(range(1079, 1217))
     y = random.choice(range(482, 613))
@@ -64,22 +69,24 @@ while True:
     count = 0
     while not d.exists("item/victory.png"):
         count = count + 1
+        time.sleep(10)
         print("还没到胜利---->" + str(count))
+    print("胜利---->" + str(count))
 
     x = random.choice(range(0, 1280))
-    y = random.choice(range(50, 150))
+    y = random.choice(range(50, 163))
     d.click(x, y)
-    time.sleep(2)
+    time.sleep(3)
 
     x = random.choice(range(0, 1280))
-    y = random.choice(range(50, 150))
+    y = random.choice(range(50, 163))
     d.click(x, y)
-    time.sleep(2)
+    time.sleep(3)
 
     x = random.choice(range(0, 1280))
-    y = random.choice(range(50, 150))
+    y = random.choice(range(50, 163))
     d.click(x, y)
-    time.sleep(7)
+    # time.sleep(5)
 
     print("打完了")
     # --------------------------------------------------------
